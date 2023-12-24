@@ -1,0 +1,65 @@
+.container-login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 57rem;
+    justify-content: center;
+    background-image: url('../../assets/register-assets/bg-login-1440.png');
+    background-size: cover;
+}
+
+.Box-login{
+    display: flex;
+    flex-direction: column;
+    border: none;
+    border-radius: 0.8rem;
+    padding: 3rem;
+    background-color: #ffffff;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    width: 32rem;
+}
+
+.topic-login{
+    text-align: center;
+}
+
+.topic-login h3{
+    font-size: 1.875rem;
+    font-weight: 500;
+}
+
+.topic-login h6{
+    font-size: 1rem;
+    color: #8c8c8c;
+    font-weight: 400;
+    margin: 1rem 0 2rem 0;
+}
+
+.topic-login h6 span{
+    color: #842CDD;
+}
+
+.div-fgp{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.forget-pass{
+    color: #842CDD;
+    font-weight: 500;
+    margin-top: 1rem;
+    text-decoration: none;
+}
+
+.Box-login h5{
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.Link.Login{
+    text-decoration: none;
+    color: #842CDD;
+    margin-left: 0.5rem;
+}

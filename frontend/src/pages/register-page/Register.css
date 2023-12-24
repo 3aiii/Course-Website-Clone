@@ -1,0 +1,223 @@
+
+.container-register{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../../assets/register-assets/bg-login-1440.png');
+    background-size: cover;
+}
+
+.box-register{
+    width: 30rem;
+}
+
+.text-register{
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;   
+    color: #A448EA;
+    margin: 3rem 0;
+    font-size: 2.2rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    gap: 0.4rem;
+}
+
+.text-register h2 span {
+    color: #49236B;
+}
+
+.text-register img{
+    width: 70px;
+}
+
+.h1-register{
+    font-weight: 500;
+    text-align: center;
+    font-size: 2rem;
+    
+}
+
+.intro-text{
+    text-align: center;
+    font-weight: 300;
+}
+
+.intro-text h6{
+    color: #8c8c8c;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 1rem;
+}
+
+.intro-text p{
+    font-weight: 500;
+    color: #842CDD;
+}
+
+.register-form{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.Box-input{
+    display: flex;
+    flex-direction: column;
+    border: none;
+    border-radius: 0.8rem;
+    padding: 3rem;
+    background-color: #ffffff;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    height: 52.5rem;
+}
+
+.register-form{
+    gap: 0.2rem;
+    margin-top: 3rem;
+}
+
+.register-input{
+    padding: 14px 20px;
+    border-radius: 0.8rem;
+    border: none;
+    background-color: #F4F6F9;
+    font-size: 16px;
+    font-weight: 300;
+    color: #9b9b9b;
+}
+
+.error-msg{
+    margin: 0.8rem 0;
+    font-size: 12px;
+    color: #F66369;
+}
+
+.register-input.error{
+    border: 2px solid #F66369;
+}
+
+.register-input.error:focus{
+    border: 2px solid #F66369;
+}
+
+.register-input::placeholder{
+    color: #b4b4b4;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.register-input:focus{
+    outline: none;
+    border: 2px solid #9852E3;
+}
+
+.register-dual{
+    display: flex;
+    justify-content: space-between;
+}
+
+.register-dual .register-input{
+    width: 11.5rem;
+}
+
+.register-checkbox{
+    display: flex;
+    /* text-align: center; */
+}
+
+.register-checkbox p{
+    font-size: 12px;
+    margin-left: 14px;
+    width: 16.8rem;
+}
+
+.register-checkbox input[type='checkbox'] {
+    position: relative;
+    appearance: none; /* ปิดการใช้งานการแสดงลักษณะของ checkbox เดิม */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 1.4rem; /* กำหนดขนาดของ checkbox */
+    height: 1.4rem; /* กำหนดขนาดของ checkbox */
+    border: 2px solid #842CDD; /* สีขอบ checkbox */
+    border-radius: 0.4rem; /* ทำให้มีเส้นมน */
+    outline: none; /* ลบเส้นขีดรอบ checkbox เมื่อคลิก */
+    cursor: pointer; /* เปลี่ยนรูป cursor เป็นมือเมื่อผู้ใช้ชี้ที่ checkbox */
+}
+
+.register-checkbox.error input[type='checkbox'] {
+    border: 2px solid #F66369; /* สีขอบ checkbox */
+}
+
+.register-checkbox input[type="checkbox"]:checked {
+    background-color: #842CDD; /* สีพื้นหลังเมื่อ checkbox ถูกติ๊ก */
+    border-color: #842CDD; /* สีขอบเมื่อ checkbox ถูกติ๊ก */
+}
+
+.register-checkbox input[type="checkbox"]:checked::before {
+    content: '\2713'; /* เครื่องหมายถูก */
+    position: absolute;
+    color: #fff;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: bold;
+    left: 3px;
+    bottom: 0.1px;
+}
+
+.btn-register{
+    height: 3rem;
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+    background-color: #842CDD;
+    border: none;
+    border-radius: 1rem;
+    margin: 2.5rem 0;
+    transition: 0.2s ease-in-out;
+    font-weight: 500;
+}
+
+.btn-register:focus{
+    outline: none;
+}
+
+.btn-register:hover{
+    background-color: rgb(113, 33, 194);
+}
+
+.Box-input h5{
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.Box-input .Link{
+    text-decoration: none;
+    color: #842CDD;
+    font-weight: 500;
+}
+
+.div-back-to-first-page{
+    margin-top: 1.5rem;
+    margin-bottom: 4.5rem;
+    text-align: center;
+}
+
+.back-to-first-page{
+    font-size: 18px;
+    text-decoration: none;
+    color: #842CDD;
+    font-weight: 400;
+}
+
+.back-to-first-page span{
+    margin-left: 1rem;
+}
+
+.back-to-first-page svg{
+    font-size: 1.2rem;
+    font-weight: 400;
+}
