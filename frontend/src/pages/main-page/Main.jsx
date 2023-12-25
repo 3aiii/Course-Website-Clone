@@ -3,16 +3,21 @@ import { useNavigate } from 'react-router-dom'
 
 const Main = () => {
     const navigate = useNavigate()
-
+    const user = localStorage.getItem('course-user')    
+    const user_new = JSON.parse(user)
 
     const handleLogout = ()=>{
         localStorage.clear()
         navigate('/login')
     }
-
+    
     useEffect(()=>{
-        if(!localStorage.getItem('course-user')){
-            navigate('/login')
+        if(localStorage.getItem('course-user')){
+            if(!user_new.isValidation){
+                navigate('/otp')                
+            }
+        } else{
+            navigate('/')            
         }
      },[])
 

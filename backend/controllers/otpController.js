@@ -1,6 +1,6 @@
 const OTP = require("../models/otpModel")
 const generateOTP = require("../utils/generateOTP");
-const {hashData,verifyHashedData} = require("../utils/hashData");
+const { hashData,verifyHashedData } = require("../utils/hashData");
 const sendEmail = require("../utils/sendEmail");
 require("dotenv").config();
 
@@ -47,31 +47,32 @@ const sendOTP = async ({ email,subject,message,duration = 1 }) =>{
         // generate pin in utills folder 
         const generate = await generateOTP()
 
-    // send email
-    const mailOptions = {
-        from: process.env.AUTH_EMAIL,
-        to: email,
-        subject,
-        html: `
-            <div style="font-family: 'Arial', sans-serif; background-color: #f4f4f4; padding: 20px; text-align: center;">
-                <p style="font-size: 18px;">${message}</p>                
-                <div style="background-color: #ffffff; border: 1px solid #ddd; border-radius: 5px; padding: 20px; margin-top: 20px;">
-                    <p style="font-size: 25px; color: tomato; letter-spacing: 2px; margin-bottom: 10px;"><b>${generate}</b></p>
-                    <p style="font-size: 16px; color: #555;">This code <b>expires in ${duration} hour</b>.</p>
+        // send email
+        const mailOptions = {
+            from: process.env.AUTH_EMAIL,
+            to: email,
+            subject,
+            html : `
+                <div style="font-family: 'Arial', sans-serif; background-color: #f4f4f4; padding: 20px; text-align: center;">
+                    <p style="font-size: 18px;">${message}</p>                
+                    <div style="background-color: #ffffff; border: 1px solid #ddd; border-radius: 5px; padding: 20px; margin-top: 20px;">
+                        <p style="font-size: 25px; color: tomato; letter-spacing: 2px; margin-bottom: 10px;"><b>${generate}</b></p>
+                        <p style="font-size: 16px; color: #555;">This code <b>expires in ${duration} min</b>.</p>
+                    </div>
                 </div>
-            </div>
-        `
+            `
     };
 
         await sendEmail(mailOptions)
 
         // save otp record
         const hashOTP = await hashData(generate)
+        const currentTime = Date.now()
         const newOTP = await new OTP({
             email,
             otp : hashOTP,
-            createdAt : Date.now(),
-            expiresAt : Date.now() +360000 * + duration,
+            createdAt : currentTime,
+            expiresAt : currentTime + 60000,
         })
 
         const createdOTPRecord = await newOTP.save() // insert otp row into db
@@ -91,4 +92,4 @@ const deleteOTP = async (email)=>{
     }
 }
 
-module.exports = { sendOTP,verifyOTP } 
+module.exports = { sendOTP,verifyOTP,deleteOTP } 

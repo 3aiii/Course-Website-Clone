@@ -89,9 +89,16 @@ const Register = () => {
                 password ,
                 isChecked 
             })
-            localStorage.setItem('course-user',JSON.stringify(data.data))
-            navigate('/otp')
-            
+
+            if (data.status){
+                localStorage.setItem('course-user',JSON.stringify(data.data))
+                navigate('/otp')
+            } else{
+                if(data.msg === 'Email ของท่านถูกใช้งานแล้ว'){
+                    setErrorEmail('Email ของท่านถูกใช้งานแล้ว')
+                }
+            }
+
         }
 
     }

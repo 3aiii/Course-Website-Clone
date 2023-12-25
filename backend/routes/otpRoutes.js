@@ -1,4 +1,6 @@
 const { sendOTP,verifyOTP } = require("../controllers/otpController");
+const { findOne, findOneAndUpdate } = require("../models/userModel");
+const User = require("../models/userModel")
 
 const router = require("express").Router();
 
@@ -24,7 +26,8 @@ router.post('/verify', async(req,res)=>{
         let { email,otp } = req.body
         const validOTP = await verifyOTP({ email,otp })
         
-        res.status(200).json({ valid : validOTP })
+        const updatedUser = await User.findOneAndUpdate({ email }, { isValidation: true }, { new: true });          
+        res.status(200).json({ valid : validOTP ,data : updatedUser})
         
     } catch (error) {
         res.status(400).send(error.message)        

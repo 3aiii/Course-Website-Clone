@@ -25,6 +25,10 @@ const UserModel = new mongoose.Schema({
         type : Boolean,
         require : true
     },
+    isValidation : {
+        type : Boolean,
+        require : true
+    }
 },
     {
         timestamps : true

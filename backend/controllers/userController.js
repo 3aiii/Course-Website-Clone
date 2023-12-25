@@ -22,6 +22,7 @@ module.exports.register = async (req,res,next) =>{
             telephone,
             isChecked,
             password : hashPassword,
+            isValidation : false
         })
 
         delete user.password
