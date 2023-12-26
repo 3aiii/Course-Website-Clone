@@ -8,10 +8,6 @@ module.exports.register = async (req,res,next) =>{
 
         if(email_check){
             return res.json({msg : 'Email ของท่านถูกใช้งานแล้ว',status : false})
-        } else if(telephone.length !== 11){
-            return res.json({msg : 'เบอร์โทรศัพท์ของท่านไม่ถูกต้อง',status : false})     
-        } else if(isChecked === false){
-            return res.json({status : false})
         }
         
         const hashPassword = await bcrypt.hash(password,10)

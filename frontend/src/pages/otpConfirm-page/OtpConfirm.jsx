@@ -7,6 +7,7 @@ import { sendOtpRoute, verifyOtpRoute } from '../../utils/APIRoutes';
 const OtpConfirm = () => {
     const navigate = useNavigate()
     const [ otp,setOtp ] = useState('')
+    const [errorOtp, setErrorOtp] = useState('')
 
     let user = localStorage.getItem('course-user')
     let user_new = JSON.parse(user)
@@ -19,7 +20,6 @@ const OtpConfirm = () => {
             subject : "email Verification",
             message : "Verification your email with the code below",
         })
-        
         console.log(data);        
     }
     
@@ -36,9 +36,8 @@ const OtpConfirm = () => {
             localStorage.setItem('course-user',JSON.stringify(user_new))       
             navigate('/')
         } else{
-            alert('OTP ผิดน่ะน้องชาย')
+            setErrorOtp('เกิดข้อผิดพลาด กรุณาลองส่ง OTP ใหม่อีกครั้ง')
         }
-        
     }
     
     useEffect(()=>{
@@ -70,8 +69,12 @@ const OtpConfirm = () => {
                             type='text'
                             placeholder='กรอกรหัส OTP 4 หลัก'
                             className='input-otp'
-                            onChange={(e)=> setOtp(e.target.value)}
+                            onChange={(e)=> {
+                                setErrorOtp(otp ? '' : 'เกิดข้อผิดพลาด กรุณาลองส่ง OTP ใหม่อีกครั้ง')
+                                setOtp(e.target.value)
+                            }}
                         />
+                        <div className='error-msg'>{errorOtp}</div>
                         <button className='btn-otp' type='onsubmit'>ยืนยัน OTP</button>
                         <button className='btn-otp back' onClick={()=>navigate('/register')}>กลับ</button>
                         <p>เมื่อคุณกด “ยืนยันรหัส OTP” ถือว่าคุณได้ยอมรับ <span>ข้อกําหนดการใช้งาน</span></p>

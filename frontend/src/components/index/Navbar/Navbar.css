@@ -1,0 +1,132 @@
+.navbar-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    width: 100vw;
+    /* border: 1px solid #111; */
+    position: fixed;
+    top: 0;
+    background-color: #fff;
+}
+
+.navbar-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+    width: 80rem;
+}
+
+.navbar-text,
+.navbar-div-logo {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-div-logo img{
+    width: 45px;
+    height: 45px;
+}
+
+.navbar-div-logo h2{
+    color: #A448EA;
+    font-size: 2.2rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.navbar-div-logo h2 span{
+    color: #49236B;
+}
+
+.navbar-text ul{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    list-style: none;
+    margin: 0 2rem;
+}
+
+.navbar-text ul li{
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.navbar-text ul li svg{
+    font-size: 1.1rem;
+}
+
+.navbar-text ul li .navbar-link{
+    color: #111;
+    text-decoration: none;
+}
+
+.navbar-actions{
+    display: flex;
+}
+
+.navbar-search,
+.navbar-icon-actions{
+    display: flex;
+    align-items: center;
+}
+
+.navbar-search{
+    position: relative;
+    border-right: 2px solid #ebebeb;
+    margin: 0 1.5rem;
+}
+
+.navbar-search svg{
+    position: absolute;
+    font-size: 1.8rem;
+    color: #c5c5c5;
+    left: 20px;
+}
+
+.navbar-search input{
+    width: 17.5rem;
+    margin: 0 0.8rem;
+    padding: 0.8rem 0.8rem 0.8rem 2.5rem;
+    border-radius: 0.4rem;
+    border: none;
+    background-color: #F4F6F9;
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+.navbar-search input:focus{
+    outline: none;
+    border: 1px solid #A448EA;
+}
+
+.navbar-search input::placeholder{
+    font-size: 0.9rem;
+    color: #c5c5c5;
+    font-weight: 300;
+}
+
+.navbar-icon-actions{
+    gap: 1rem;
+}
+
+.navbar-icon-actions div svg{
+    font-size: 1.7rem;
+    cursor: pointer;
+}
+
+.btn-profile{
+    border-radius: 100%;
+    padding: 0.7rem 1.1rem;
+    border: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 0.8rem;
+    background : linear-gradient(136.67deg,#ff409a 8.34%,#c438ef 95.26%);;
+    color: #fff;
+}
+
+.btn-profile:focus{
+    outline: none;
+}
