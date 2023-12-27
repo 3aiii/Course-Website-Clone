@@ -1,0 +1,13 @@
+.btn-slice{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.btn-slice svg{
+    font-size: 1.7rem;
+    color: #6C2AAE;
+}

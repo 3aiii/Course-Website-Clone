@@ -3,18 +3,26 @@
     align-items: center;
     justify-content: center;
     height: 80px;
-    width: 100vw;
     /* border: 1px solid #111; */
-    position: fixed;
+    position: sticky;
     top: 0;
     background-color: #fff;
+    z-index: 999;
+}
+
+.navbar-container.unLogin{
+    position: fixed;
+    background-color: transparent;
+    z-index: 999;
+    color: #fff;
+    width: 100vw;
 }
 
 .navbar-box{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5rem;
+    gap: 1rem;
     width: 80rem;
 }
 
@@ -25,8 +33,8 @@
 }
 
 .navbar-div-logo img{
-    width: 45px;
-    height: 45px;
+    width: 210px;
+    height: 35px;
 }
 
 .navbar-div-logo h2{
@@ -62,6 +70,11 @@
     text-decoration: none;
 }
 
+.navbar-text ul li .navbar-link.unLogin{
+    color: #fff;
+    text-decoration: none;
+}
+
 .navbar-actions{
     display: flex;
 }
@@ -86,7 +99,7 @@
 }
 
 .navbar-search input{
-    width: 17.5rem;
+    width: 15rem;
     margin: 0 0.8rem;
     padding: 0.8rem 0.8rem 0.8rem 2.5rem;
     border-radius: 0.4rem;
@@ -94,6 +107,11 @@
     background-color: #F4F6F9;
     font-size: 0.9rem;
     font-weight: 400;
+}
+
+.navbar-search.unLogin input{
+    background-color: #393070;
+    color: #fff;
 }
 
 .navbar-search input:focus{
@@ -129,4 +147,37 @@
 
 .btn-profile:focus{
     outline: none;
+}
+
+/* unLogin */
+
+.navbar-unlogin{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+}
+
+.navbar-unlogin svg{
+    font-size: 1.8rem;
+}
+
+.Link-navbar{
+    text-decoration: none;
+    color: #fff;
+    background-color: transparent;
+    border: 1px solid #A448EA;
+    border-radius: 17px;
+    padding: 0.7rem;
+    font-size: 1rem;
+    font-weight: 500;
+    width: 8.5rem;
+}
+
+.Link-navbar.login:hover{
+    background-color: #842CDD;
+}
+
+.Link-navbar.register{
+    background-color: #842CDD;
 }

@@ -4,54 +4,69 @@ import { TiArrowSortedDown } from "react-icons/ti";
 import { IoMdSearch } from "react-icons/io";
 import { FiBook } from "react-icons/fi";
 import { IoNotificationsOutline,IoCartOutline  } from "react-icons/io5";
+import { useEffect } from 'react';
 
 const Navbar = () => {
+  const user = JSON.parse(localStorage.getItem('course-user'))
+
   return (
-    <div className='navbar-container'>
+    <div className={`navbar-container ${!user ? `unLogin` : `` }`}>
       <div className='navbar-box'>
         <div className='navbar-text'>
-          <div className='navbar-div-logo'>
+          <div className={`navbar-div-logo`}>
             <img
-              src='/src/assets/login-assets/futureskill_logo.jpg'
+              src={!user ? '/src/assets/main-assets/fs-logo-dark.webp' : '/src/assets/main-assets/fs-logo-light.png'}
               alt='navbar-logo'
             />
-            <h2>Past<span className='span-register'>Skill</span></h2>
           </div>
           <ul>
             <li>
               <p>คอร์สออนไลน์ <TiArrowSortedDown /></p>
             </li>
             <li>
-              <Link to='/' className='navbar-link'>สมาชิกรายปี</Link>
+              <Link to='/' className={`navbar-link ${!user ? `unLogin` : ``}`}>สมาชิกรายปี</Link>
             </li>
             <li>
-              <Link to='/' className='navbar-link'>สำหรับองค์กร</Link>
+              <Link to='/' className={`navbar-link ${!user ? `unLogin` : ``}`}>สำหรับองค์กร</Link>
             </li>
           </ul>
         </div>
         <div className='navbar-actions'>
-          <div className='navbar-search'>
+          <div className={`navbar-search ${!user ? `unLogin` : ``}`}>
             <IoMdSearch />
             <input
               type='text'
-              className='nabar-input'
               placeholder='ค้นหา'
             />
           </div>
-          <div className='navbar-icon-actions'>
-            <div className='navbar-book'>
-              <FiBook />
-            </div>
-            <div className='navbar-book'>
-              <IoNotificationsOutline />
-            </div>
-            <div className='navbar-book'>
-              <IoCartOutline />
-            </div>
-            <div className='navbar-book'>
-              <button className='btn-profile'>S</button>
-            </div>
-          </div>
+          {
+            user ? (
+              <>
+                <div className='navbar-icon-actions'> 
+                  <div className='navbar-book'>
+                    <FiBook />
+                  </div>
+                  <div className='navbar-book'>
+                    <IoNotificationsOutline />
+                  </div>
+                  <div className='navbar-book'>
+                    <IoCartOutline />
+                  </div>
+                  <div className='navbar-book'>
+                    <button className='btn-profile'>S</button>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className='navbar-unlogin'>
+                  <IoCartOutline />
+                  <Link to='/login' className='Link-navbar login'>เข้าสู่ระบบ</Link>          
+                  <Link to='/register' className='Link-navbar register'>สมัครสมาชิก</Link>          
+                </div>
+              </>
+            )
+          }
         </div>
       </div>
     </div>
