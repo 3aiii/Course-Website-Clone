@@ -15,7 +15,6 @@ router.post('/', async(req,res)=>{
         })
 
         res.status(200).json(createOTP)
-
     } catch (error) {
         res.status(400).json(error.message)
     }
@@ -24,11 +23,10 @@ router.post('/', async(req,res)=>{
 router.post('/verify', async(req,res)=>{
     try {
         let { email,otp } = req.body
-        const validOTP = await verifyOTP({ email,otp })
+        const validOTP = await verifyOTP({ email,otp })        
+        const updatedUser = await User.findOneAndUpdate({ email }, { isValidation: true }, { new: true });        
         
-        const updatedUser = await User.findOneAndUpdate({ email }, { isValidation: true }, { new: true });          
-        res.status(200).json({ valid : validOTP ,data : updatedUser})
-        
+        res.status(200).json({ valid : validOTP ,data : updatedUser})        
     } catch (error) {
         res.status(400).send(error.message)        
     }

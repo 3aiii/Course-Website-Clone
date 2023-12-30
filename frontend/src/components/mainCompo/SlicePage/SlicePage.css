@@ -1,8 +1,8 @@
 .slicePage-container{
-    /* display: block; */
     position: relative;
-    overflow: hidden;
     height: 90vh;
+    /* width: 100vw; */
+    overflow: hidden;
 }
 
 .box-img-slicePage img{
@@ -87,3 +87,37 @@
 .dot:hover{
     background-color: #BFBFBF;
 }
+
+/**
+* Basic CSS Media Query Template
+* TODO: I should probably use Sass...
+* Author: Michael Vieth
+* ------------------------------------------
+*  Responsive Grid Media Queries - 1280, 1024, 768, 480
+*   1280-1024   - desktop (default grid)
+*   1024-768    - tablet landscape
+*   768-480     - tablet 
+*   480-less    - phone landscape & smaller
+* --------------------------------------------
+*/
+
+
+@media screen 
+  and (min-device-width: 1200px) 
+  and (max-device-width: 1600px) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+      .style-btn{
+          position: absolute;
+          top: 40rem;
+          bottom: -2rem;
+          left: 50rem;
+      }
+
+}
+
+
+@media all and (min-width: 768px) and (max-width: 1024px) { }
+
+@media all and (min-width: 480px) and (max-width: 768px) { }
+
+@media all and (max-width: 480px) { }

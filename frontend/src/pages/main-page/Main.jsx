@@ -1,10 +1,11 @@
-import React,{useEffect} from 'react'
+import React,{useEffect, useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import Navbar from '../../components/index/Navbar/Navbar'
 import SlicePage from '../../components/mainCompo/SlicePage/SlicePage'
 import user from '../../utils/User'
 import SectionDetail from '../../components/mainCompo/SectionDetail/SectionDetail'
 import Category from '../../components/mainCompo/CategorySection/Category'
+import SectionPath from '../../components/mainCompo/SectionPath/SectionPath'
 
 const Main = () => {
     const navigate = useNavigate()
@@ -27,7 +28,8 @@ const Main = () => {
             <div>
                 <SlicePage />
                 <SectionDetail />
-                <Category />
+                <Category />   
+                <SectionPath />  
             </div>
             {/* <button onClick={handleLogout}>Logout</button> */}
         </>

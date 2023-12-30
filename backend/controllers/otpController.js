@@ -61,7 +61,7 @@ const sendOTP = async ({ email,subject,message,duration = 1 }) =>{
                     </div>
                 </div>
             `
-    };
+        };
 
         await sendEmail(mailOptions)
 

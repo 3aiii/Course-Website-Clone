@@ -15,8 +15,7 @@ transporter.verify((err, success) => {
         console.log(err);
     } else {
         console.log("Ready for messages");
-        console.log(success);
-    }
+}
 });
 
 const sendEmail = async (mailOptions) => {
