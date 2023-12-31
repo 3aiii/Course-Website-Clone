@@ -1,27 +1,32 @@
 import { useState,useEffect } from 'react'
 import './Category.css'
 import axios from 'axios';
-import { getAllCatRoute } from '../../../utils/APIRoutes';
+import { getAllCatRoute, getSingleCatRoute } from '../../../utils/APIRoutes';
 import { Link } from 'react-router-dom'
 import { BsArrowRight } from "react-icons/bs";
 import { IoIosArrowBack,IoIosArrowForward } from "react-icons/io";
 import Card from '../../index/Card/Card';
 
 const Category = () => {
-  const [catData , setCatData] = useState([])
+  const [btnCat , setbtnCat] = useState([])
   const [sliceIndex , setSliceIndex] = useState(0)
-
+  const [CatData,setCatData] = useState([])
+  
   const getAllCat = async () =>{
     const { data } = await axios.get(getAllCatRoute)
-    setCatData(data)
+    setbtnCat(data)
   }
 
-  const handleCategory = async (index)=>{
+  const handleCategory = async (index,id)=>{
     setSliceIndex(index)
+
+    const { data } = await axios.get(`${getSingleCatRoute}/${id}`)
+    setCatData(data.data)
   }
 
   useEffect(()=>{
     getAllCat()
+    handleCategory(0,'0')
   },[])
 
   return (
@@ -31,16 +36,16 @@ const Category = () => {
         <div className='container-all-btn'>
           <button
             className={`btn-get-cat ${sliceIndex === 0 ? `active` :``}`}
-            onClick={()=>handleCategory(0)}
+            onClick={()=>handleCategory(0,'0')}
           >
             ทั้งหมด
           </button>
           {
-            catData.map((data,index)=>(
+            btnCat.map((data,index)=>(
               <button
-                className={`btn-get-cat ${sliceIndex === index+1 ? `active` :``}`}
+                className={`btn-get-cat ${sliceIndex === index + 1 ? `active` :``}`}
                 key={index}
-                onClick={()=>handleCategory(index+1)}
+                onClick={()=>handleCategory(index+1 ,data._id)}
               >
                 { data.name }
               </button>
@@ -59,10 +64,11 @@ const Category = () => {
           </div>
         </div>
         <div className='card-info'>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          {
+            CatData.map((data,index)=>(
+              <Card CatData = {data} key={index} />
+            ))
+          }
         </div>
       </div>
     </div>

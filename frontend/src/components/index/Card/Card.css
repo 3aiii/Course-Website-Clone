@@ -11,7 +11,7 @@
 
 .img-card{
     width: 303px;
-    /* height: 166px; */
+    height: 160px;
     border-top-right-radius: 1rem;
     border-top-left-radius: 1rem;
     object-fit: cover;

@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const categoryModel = new mongoose.Schema({
     id : {
         require : true,
-        type : String
+        type : String,
     },
     name : {
         require : true,
