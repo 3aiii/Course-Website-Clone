@@ -1,0 +1,135 @@
+.Feedback-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 53.5rem;
+}
+
+.img-bg-feedback.first{
+    width: 700px;
+    height: 700px;
+    position: absolute;
+    left: 5%;
+    top: 330%;
+}
+
+.img-bg-feedback.sec{
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    right: 0;
+    top: 340%;
+    right: 18%;
+}
+
+.img-bg-feedback.first.onUser{
+    top: 335%;
+}
+
+.Main-feedback{
+    display: flex;
+    gap: 10rem;
+    position: relative;
+}
+
+.text-feedback{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-feedback h5{
+    font-size: 1.3rem;
+}
+
+.text-feedback h5 span{
+    color: #994DE7;
+}
+
+.content-feedback{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content-feedback h4{
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-top: 2rem;
+}
+
+
+.img-star svg{
+    font-size: 1.4rem;
+    color: #EDC65E;
+    margin-right: 0.1rem;
+}
+
+.all-feedback{
+    margin-top: 2rem;
+    width: 640px;
+    height: 320px;
+    border: 8px solid #E8DDFF;
+    background-color: #fff;
+    font-weight: 400;
+    font-size: 1.1rem;
+    padding: 3rem;
+    text-align: center;
+}
+
+.all-feedback p svg{
+    font-size: 1.7rem;
+    color: #842CDD;
+}
+
+.img-feedback{
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+.text-viewer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows:  1fr 1fr;
+    margin-top: 160px;
+    gap: 1.5rem;
+}
+
+.viewer-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 172px;
+    height: 158px; 
+    border: 2px solid #C39EEF;
+    border-radius: 7%;
+    color: #842CDD;
+}
+
+.viewer-container h2{
+    font-size: 1.75rem;
+    line-height: 3rem;
+}
+
+/* .viewer-container p{
+    font-size: 0.8rem;
+} */
+
+
+
+.list-feedback-profile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10rem;
+}
+
+.list-feedback-profile h6{
+    margin-top: 0.3rem;
+    font-size: 1rem;
+}

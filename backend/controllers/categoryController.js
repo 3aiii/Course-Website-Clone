@@ -25,7 +25,7 @@ module.exports.getSingleCat = async(req,res,next) =>{
 
         } else{
             const data = await course.find({ category : id })
-            .populate('category')
+            .populate({path : 'category', select : 'name'})
             .populate('userCreate')
     
             res.json({data})

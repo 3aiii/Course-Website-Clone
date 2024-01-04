@@ -9,7 +9,7 @@ const SectionDetail = () => {
             <div className='section-desc'>
                 <h1>แพลตฟอร์มคอร์สเรียนออนไลน์<br/>สำหรับพัฒนาทักษะแห่งอนาคต</h1>
                 <p>
-                    คอร์สออนไลน์ของ FutureSkill ครอบคลุมทั้งสาย Business, Technology,<br/>
+                    คอร์สออนไลน์ของ PastSkill ครอบคลุมทั้งสาย Business, Technology,<br/>
                     Data และ Creative สอนโดยผู้เชี่ยวชาญที่คัดกรองโปรไฟล์มาแล้ว
                 </p>
             </div>

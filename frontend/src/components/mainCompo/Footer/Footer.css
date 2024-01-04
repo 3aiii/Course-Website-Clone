@@ -1,0 +1,81 @@
+.footer-container{
+    background-color: #F9F9FE;
+}
+
+
+.footer-box{
+    display: grid;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 82px;
+    padding: 42px 16px 16px;
+}
+
+.footer-first-div,.footer-logo-and-text{
+    display: flex;
+    justify-content: space-between
+}
+
+.footer-first-div{
+    margin-bottom: 2rem;
+}
+
+.footer-logo-and-text{
+    flex-direction: column;
+    justify-content: start;
+    width: 520px;
+    height: 138px;
+}
+
+.footer-logo-and-text p{
+    line-height: 3rem;
+}
+
+.footer-menu{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+    width: 728px;
+}
+
+.footer-menu-name{
+    font-size: 1rem;
+    font-weight: 400;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.footer-menu-name:hover{
+    color: #842DDD;
+}
+
+.footer-logo{
+    width: 220px;
+    height: 35px;
+    object-fit: contain;
+}
+
+
+.footer-sec-div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #CDD4E0;
+    padding: 1rem 0 0.5rem 0;
+}
+
+.footer-sec-text-and-logo{
+    color: #63718B;
+}
+
+.footer-sec-text-and-logo svg{
+    color: #111;
+    margin-right: 1rem;
+    cursor: pointer;
+}
+
+.footer-sec-text-and-logo svg:hover{
+    color: #842DDD;
+}

@@ -6,6 +6,9 @@ import user from '../../utils/User'
 import SectionDetail from '../../components/mainCompo/SectionDetail/SectionDetail'
 import Category from '../../components/mainCompo/CategorySection/Category'
 import SectionPath from '../../components/mainCompo/SectionPath/SectionPath'
+import Warranty from '../../components/mainCompo/Warranty/Warranty'
+import FeedBack from '../../components/mainCompo/Feedback/FeedBack'
+import Footer from '../../components/mainCompo/Footer/Footer'
 
 const Main = () => {
     const navigate = useNavigate()
@@ -30,6 +33,9 @@ const Main = () => {
                 <SectionDetail />
                 <Category />   
                 <SectionPath />  
+                <Warranty />
+                <FeedBack />
+                <Footer />
             </div>
             {/* <button onClick={handleLogout}>Logout</button> */}
         </>

@@ -5,7 +5,6 @@ import { VscGraph } from "react-icons/vsc";
 import { IoCartOutline  } from "react-icons/io5";
 
 const Card = ({ CatData }) => {
-    console.log(CatData);
     return (
         <div className='card-container'>
             <img

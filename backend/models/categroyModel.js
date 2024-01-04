@@ -8,6 +8,9 @@ const categoryModel = new mongoose.Schema({
     name : {
         require : true,
         type : String
+    }, 
+    childrens : {
+        type : Array
     }
 })
 

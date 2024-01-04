@@ -1,0 +1,32 @@
+.warranty-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(32,36,80);
+    background: radial-gradient(circle, rgba(32,36,80,1) 11%, rgba(14,25,52,1) 100%);
+}
+
+.warranty-box{
+    text-align: center;
+    color: #fff;
+    padding: 40px 16px 24px;
+}
+
+.warranty-box h2{
+    font-size: 2rem;
+}
+
+.warranty-company{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    gap: 3.5rem;
+    margin: 20px 20px 0;
+}
+
+.warranty-company img{
+    width: 11rem;
+    height: auto;
+    object-fit: contain;
+}
