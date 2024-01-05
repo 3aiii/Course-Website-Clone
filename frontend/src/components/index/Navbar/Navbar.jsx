@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css'
 import { TiArrowSortedDown,TiArrowSortedUp } from "react-icons/ti";
 import { IoMdSearch } from "react-icons/io";
@@ -6,16 +6,22 @@ import { FiBook } from "react-icons/fi";
 import { IoNotificationsOutline,IoCartOutline  } from "react-icons/io5";
 import { useEffect, useState } from 'react';
 import DropDown from './DropDown';
-import axios from 'axios';
+import ProfilePopUp from './ProfilePopUp';
 
 const Navbar = () => {
   const user = JSON.parse(localStorage.getItem('course-user'))
+  const navigate = useNavigate()
   const [open,setOpen] = useState(false)
-  const [data,setData] = useState([])
+  const [openProfile,setOpenProfile] = useState(false)
   const [scrollSwitch ,setScrollSwitch] = useState(0)
 
   const handlScroll = () =>{
     setScrollSwitch(window.scrollY)
+  }
+
+  const handleLogOut = () =>{
+    localStorage.removeItem('course-user')
+    navigate('/')
   }
 
   useEffect(() => {
@@ -24,11 +30,6 @@ const Navbar = () => {
       window.removeEventListener('scroll', handlScroll)
     }
   }, [])
-  // function handleHover() {
-  //   // ทำอะไรก็ตามที่คุณต้องการเมื่อมีการ hover
-  //   console.log('Hovered!');
-  //   // เพิ่มโค้ดที่คุณต้องการทำในฟังก์ชันนี้
-  // }
 
   return (
     <>
@@ -70,39 +71,50 @@ const Navbar = () => {
             </div>
             {
               user ? (
-                <>
-                  <div className='navbar-icon-actions'> 
-                    <div className='navbar-book'>
-                      <FiBook />
-                    </div>
-                    <div className='navbar-book'>
-                      <IoNotificationsOutline />
-                    </div>
-                    <div className={`navbar-book`}>
-                      <IoCartOutline />
-                    </div>
-                    <div className='navbar-book'>
-                      <button className='btn-profile'>S</button>
-                    </div>
+                <div className='navbar-icon-actions'> 
+                  <div className='navbar-book'>
+                    <FiBook />
                   </div>
-                </>
+                  <div className='navbar-book'>
+                    <IoNotificationsOutline />
+                  </div>
+                  <div className={`navbar-book`}>
+                    <IoCartOutline />
+                  </div>
+                  <div className={`navbar-book`}>
+                    <button className='btn-profile' onClick={()=> setOpenProfile(!openProfile)}>
+                      {
+                        user.firstName.charAt(0)
+                      }
+                    </button>
+
+                    {/* OpenProfile */}
+                    { 
+                      <ProfilePopUp 
+                        user={user} 
+                        visible = {openProfile}  
+                        handleLogOut = {handleLogOut}
+                      />                      
+                    }                   
+                  </div>
+                </div>
               ) : (
-                <>
-                  <div className='navbar-unlogin'>
-                    {
-                      scrollSwitch > 50 ? <IoCartOutline color='black' /> : <IoCartOutline color=''/>
-                    }
-                    <Link to='/login' className={`Link-navbar login ${scrollSwitch > 50 ? `ScrollActive` : ``}`}>เข้าสู่ระบบ</Link>          
-                    <Link to='/register' className='Link-navbar register'>สมัครสมาชิก</Link>          
-                  </div>
-                </>
+                <div className='navbar-unlogin'>
+                  {
+                    scrollSwitch > 50 ? <IoCartOutline color='black' /> : <IoCartOutline color=''/>
+                  }
+                  <Link to='/login' className={`Link-navbar login ${scrollSwitch > 50 ? `ScrollActive` : ``}`}>เข้าสู่ระบบ</Link>          
+                  <Link to='/register' className='Link-navbar register'>สมัครสมาชิก</Link>          
+                </div>
               )
             }
           </div>
         </div>
       </div>
       <div className={`dropdown-container ${open ? `active` : `hidden` }`} >
-        <DropDown />
+        {
+          <DropDown />
+        }
       </div>
     </>
   )

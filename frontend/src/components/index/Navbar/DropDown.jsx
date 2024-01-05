@@ -17,8 +17,6 @@ const DropDown = () => {
     setClickData(data)
   }
 
-
-  // console.log(data);
   useEffect(()=>{
     FetchData()
   },[])
@@ -40,7 +38,7 @@ const DropDown = () => {
       <div className='dropdown-content'>
         {
           data.map((data,index)=>(
-            <div className='dropdown-data' key={index}>
+            <div className={`dropdown-data ${data.name === clickData ? `active` : `` }`} key={index}>
               <h4 onClick={()=> handleClickData(data.name)}>{ data.name }</h4>
             </div>
           ))

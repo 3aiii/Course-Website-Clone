@@ -9,6 +9,7 @@ import SectionPath from '../../components/mainCompo/SectionPath/SectionPath'
 import Warranty from '../../components/mainCompo/Warranty/Warranty'
 import FeedBack from '../../components/mainCompo/Feedback/FeedBack'
 import Footer from '../../components/mainCompo/Footer/Footer'
+import './Main.css'
 
 const Main = () => {
     const navigate = useNavigate()
@@ -28,7 +29,7 @@ const Main = () => {
     return (
         <>
             <Navbar />
-            <div>
+            <div className='main-body'>
                 <SlicePage />
                 <SectionDetail />
                 <Category />   
