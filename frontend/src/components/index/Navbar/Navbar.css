@@ -173,6 +173,7 @@
 
 .navbar-unlogin svg{
     font-size: 1.8rem;
+    cursor: pointer;
 }
 
 .Link-navbar{

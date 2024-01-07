@@ -10,24 +10,48 @@ import Card from '../../index/Card/Card';
 const Category = () => {
   const [btnCat , setbtnCat] = useState([])
   const [sliceIndex , setSliceIndex] = useState(0)
-  const [CatData,setCatData] = useState([])
+  const [CatData,setCatData] = useState()
+  const [currentCategoryId,setCurrentCategoryId] = useState('')
+  const [page,setPage] = useState(1)
+  const [pageCount,setPageCount] = useState(0)
+
   
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await axios.get(`${getSingleCatRoute}/${currentCategoryId}?page=${page}`);
+      setCatData(data);
+    };
+    fetchData();
+
+  }, [page, currentCategoryId]); 
+
+  const handlePrevious = () => {
+    setPage((p) => (p === 1 ? p : p - 1));
+  };
+
+  const handleNext = () => {
+    setPage((p) => (p === pageCount ? p : p + 1));
+  };
+
+  const handleCategory = async (index, id) => {
+    setSliceIndex(index);
+    setPage(1); 
+    setCurrentCategoryId(id);
+  };
+
   const getAllCat = async () =>{
     const { data } = await axios.get(getAllCatRoute)
     setbtnCat(data)
   }
 
-  const handleCategory = async (index,id)=>{
-    setSliceIndex(index)
-
-    const { data } = await axios.get(`${getSingleCatRoute}/${id}`)
-    setCatData(data.data)
-  }
-
   useEffect(()=>{
+    if (CatData){
+      setPageCount(Math.ceil(CatData.pagination.pageCount))
+    } else {
+      handleCategory(0,'5fd63a065b89624c84cb21f2')
+    }
     getAllCat()
-    handleCategory(0,'0')
-  },[])
+  },[CatData])
 
   return (
     <div className='category-cotainer'>
@@ -36,7 +60,7 @@ const Category = () => {
         <div className='container-all-btn'>
           <button
             className={`btn-get-cat ${sliceIndex === 0 ? `active` :``}`}
-            onClick={()=>handleCategory(0,'0')}
+            onClick={()=>handleCategory(0,'5fd63a065b89624c84cb21f2')}
           >
             ทั้งหมด
           </button>
@@ -58,16 +82,20 @@ const Category = () => {
         </div>
         <div className='Main-card'>
           <div className='bar'>
-            <p> 01 / 03 </p>
-            <button className='cat back-btn'><IoIosArrowBack /></button>
-            <button className='cat foward-btn'><IoIosArrowForward /></button>
+            <p> {pageCount === 0 ? '0' : page} / {pageCount} </p>
+            <button disabled = {page === 1} className='cat back-btn' onClick={pageCount === 0 ? '' : handlePrevious}><IoIosArrowBack /></button>
+            <button disabled = {page === pageCount} className='cat foward-btn' onClick={pageCount === 0 ? '' : handleNext}><IoIosArrowForward /></button>
           </div>
         </div>
         <div className='card-info'>
           {
-            CatData.map((data,index)=>(
-              <Card CatData = {data} key={index} />
-            ))
+            CatData &&
+              CatData.items.map((data,index)=>(                
+                <Card 
+                  CatData = {data} 
+                  key={index}                     
+                />
+              ))
           }
         </div>
       </div>
@@ -75,4 +103,4 @@ const Category = () => {
   )
 }
 
-export default Category
+export default Category 

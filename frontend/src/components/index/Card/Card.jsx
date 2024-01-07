@@ -6,7 +6,7 @@ import { IoCartOutline  } from "react-icons/io5";
 
 const Card = ({ CatData }) => {
     return (
-        <div className='card-container'>
+        <div className='card-container' >
             <img
                 src={CatData.courseImg}
                 alt='img-card'

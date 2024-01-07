@@ -47,12 +47,12 @@
 }
 
 .bar.collection p{
-    /* font-size: 0.8rem; */
     margin-top: 0;
     color: #56637A;
 }
 
 .slide-collection{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 1rem;
 }
