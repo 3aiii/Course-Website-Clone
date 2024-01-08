@@ -1,9 +1,32 @@
 import './FeedBack.css'
 import { FaStar } from "react-icons/fa";
 import { RiDoubleQuotesL,RiDoubleQuotesR  } from "react-icons/ri";
+import axios from 'axios';
+import { getFeedback } from '../../../utils/APIRoutes';
+import { useEffect, useState } from 'react';
 
 const FeedBack = () => {
+    const [feedbackData , setFeedbackData] = useState([])
+    const [SingleFeedback , setSingleFeedBack] = useState([])
+    const [pointer , setPointer] = useState('')
     const user = JSON.parse(localStorage.getItem('course-user'))
+
+    const fetchFeedBack = async () =>{
+        const { data } = await axios.get(`${getFeedback}?id=${pointer}`)
+        if(data.status === 'None ID'){
+            setFeedbackData(data)
+        } else{
+            setSingleFeedBack(data)
+        }
+    }
+
+    const handleFeedBack = (id) =>{
+        setPointer(id)
+    }
+
+    useEffect(()=>{
+        fetchFeedBack()
+    },[pointer])
 
     return (
         <div className='Feedback-container'> 
@@ -12,7 +35,7 @@ const FeedBack = () => {
                     <img
                         src='https://futureskill.co/_next/static/media/bg-testimonial.5c03e0f5.png'            
                         alt='img-feedback-bg'
-                        className={`img-bg-feedback first ${user ? `onUser` : ``}`}
+                        className={`img-bg-feedback first ${ user ? `onUser` : `` }`}
                     />
                 </div>
                 <div className='Feedback-div'>
@@ -27,7 +50,7 @@ const FeedBack = () => {
                         <h5><span>เสียงตอบรับ</span>จากผู้เรียนคอร์สเรียนออนไลน์ของ PastSkill 👏</h5>
                         <div className='content-feedback'>
                             <h4>5.0</h4>
-                            <div className='img-star'>
+                            <div className='img-star'>                             
                                 <FaStar />
                                 <FaStar />
                                 <FaStar />
@@ -36,22 +59,38 @@ const FeedBack = () => {
                             </div>
                             <div className='all-feedback'>
                                 <div className='feedback-section-detail'>
-                                    <p>
-                                        <RiDoubleQuotesL />
-                                        เราสามารถนําความรู้ที่ได้มาร่วมกับการทํางานของเรา เเต่ตอนนี้ยังไม่ได้นําไปใช้จริง ๆ จัง ๆ ขนาดนั้นครับผม 
-                                        เเต่ถ้ามีงานอะไรที่เกี่ยวกับพวกนี้ ผมว่ายังไงก็ต้องได้ใช้อย่างเเน่นอนครับผม ผมชอบการเรียนออนไลน์เเบบนี้ครับ 
-                                        เพราะเราสามารถดูย้อนหลังได้ เเล้วก็สามารถข้ามไปข้ามมาได้ด้วยครับ อาจารย์ก็สอนดีด้วย เเนะนําเเหล่งข้อมูลที่จะไปหาเพิ่มเติมได้ 
-                                        เปรียบเทียบเหมือนกับว่า ไม่ได้สอนเเค่เอาปลามาให้อย่างเดียว ยังสอนวิธีตกปลาด้วยครับ ที่ชอบจริง ๆ ก็ที่เอาลิงค์ ชุมชน สายอาชีพต่าง ๆ เอามาเผยเเพร่
-                                        <RiDoubleQuotesR />
-                                    </p>
+                                    {
+                                        SingleFeedback.length !== 0 ? (
+                                            <p>
+                                                <RiDoubleQuotesL />
+                                                    { SingleFeedback.data?.feedBackDes }
+                                                <RiDoubleQuotesR />
+                                            </p>                                            
+                                        ) : (
+                                            <p>
+                                                <RiDoubleQuotesL />
+                                                    { feedbackData.data && feedbackData.data[2].feedBackDes }
+                                                <RiDoubleQuotesR />
+                                            </p>                                            
+                                        )
+                                    }
                                 </div>
-                                <div className='list-feedback-profile'>
-                                    <img
-                                        src='https://mpics.mgronline.com/pics/Images/566000011856701.JPEG'
-                                        alt='img-feedback'
-                                        className='img-feedback'
-                                    />                            
-                                    <h6>อิตาโดริ ยูจิ</h6>
+                                <div className='img-btn'>
+                                    {   feedbackData.data &&
+                                        feedbackData.data.map((data,index)=> (
+                                            <div className='list-feedback-profile' key={index}>
+                                                <div className='feedback-name' >
+                                                    <img
+                                                        src='https://mpics.mgronline.com/pics/Images/566000011856701.JPEG'
+                                                        alt='img-feedback'
+                                                        className={`img-feedback ${ data._id === SingleFeedback.data?._id ? `select` : `` }`}
+                                                        onClick={()=>{handleFeedBack(data._id)}}
+                                                    />                            
+                                                    <h6 className={`btn-feedbackName`}>{ data._id === SingleFeedback.data?._id && data.user.firstName}</h6>                                                
+                                                </div>
+                                            </div>
+                                        ))
+                                    }
                                 </div>
                             </div>
                         </div>

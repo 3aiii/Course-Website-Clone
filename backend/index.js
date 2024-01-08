@@ -4,9 +4,11 @@ const Mongoose  = require('mongoose');
 const userRoute  = require('./routes/userRoutes')
 const otpRoute = require('./routes/otpRoutes');
 const categoryRoute = require('./routes/categoryRoutes');
+const feedbackRoutes = require('./routes/feedbackRoutes');
 const collectionRoute = require('./routes/CollectionRoutes');
 const CollectionModel = require('./models/CollectionModel');
 const { default: mongoose } = require('mongoose');
+const feedbackModel = require('./models/feedbackModel');
 const app = express()
 
 require("dotenv").config();
@@ -18,7 +20,7 @@ app.use('/api/auth',userRoute)
 app.use('/api/otp',otpRoute)
 app.use('/api/cat',categoryRoute)
 app.use('/api/collec',collectionRoute)
-// app.use('/api/course',)
+app.use('/api/feedback',feedbackRoutes)
 
 app.listen(process.env.PORT,()=>{
     console.log(`Server is running at port ${process.env.PORT}`);
@@ -29,6 +31,8 @@ Mongoose.connect(process.env.MONGO_URL).then(()=>{
 }).catch((err)=>{
     console.error(err);
 })
+
+
 
 
 // for ( i = 0 ; i <5 ; i++){
@@ -61,3 +65,11 @@ Mongoose.connect(process.env.MONGO_URL).then(()=>{
 //     const courseCate = new categroyModel(data)
 //     // courseCate.save()
 // })
+
+
+// const newCollec = new feedbackModel({
+//         feedBackDes : 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum',
+//         user :  new mongoose.Types.ObjectId('65883bba5077a4079db0a955'),
+//     })
+
+// newCollec.save()

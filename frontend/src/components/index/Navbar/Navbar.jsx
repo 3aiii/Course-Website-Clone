@@ -36,12 +36,12 @@ const Navbar = () => {
       <div className={`navbar-container ${!user ? `unLogin ${scrollSwitch > 50 && `scroll-active`}` : `` }`}>
         <div className='navbar-box'>
           <div className='navbar-text'>
-            <div className={`navbar-div-logo`}>
+            <Link to={'/'} className={`navbar-div-logo`}>
               <img
                 src={!user ? `/src/assets/main-assets/fs-logo-${scrollSwitch > 50 ? `light.png` : `dark.webp`}` : `/src/assets/main-assets/fs-logo-light.png`}
                 alt='navbar-logo'
               />
-            </div>
+            </Link>
             <ul>
               <li>
                 <p className={`navbar-p ${scrollSwitch > 50 && `scrollActive`}`} onClick={()=> setOpen(!open)}>คอร์สออนไลน์</p>

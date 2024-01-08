@@ -6,3 +6,4 @@ export const verifyOtpRoute = `${host}/api/otp/verify`
 export const getAllCatRoute = `${host}/api/cat/getAllCat`
 export const getSingleCatRoute = `${host}/api/cat/getSingleCat`
 export const getCollectionRoute = `${host}/api/collec/getCollection`
+export const getFeedback = `${host}/api/feedback/getFeedBack`
